@@ -57,7 +57,7 @@ public class TextFile {
 
 /**
  * Read in the next character from the input file
- * This method is only valud for input files, and
+ * This method is only valid for input files, and
  * will throw an halt program execution if called on an outpt file. 
  * (This method should probably really throw an
  * exception instead of halting the program on an error, but I'm 
