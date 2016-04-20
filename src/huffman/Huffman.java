@@ -11,8 +11,8 @@ public class Huffman {
 			
 			// array for the a-z (97-122, based on ASCII table )
 			int[] myArray = new int[26];
-			TextFile inputFile = new TextFile("sample,txt", 'r');
-			String sCurrentLine = null;
+			TextFile inputFile = new TextFile("samp.txt", 'r');
+			
 
 			while (inputFile.EndOfFile() != true)
 			{
