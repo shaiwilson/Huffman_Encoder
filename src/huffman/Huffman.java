@@ -7,24 +7,12 @@ import java.io.IOException;
 
 public class Huffman {
 	
-	
-	
 	public static void main(String[] args) throws IOException {
-		
-
-		
-		
-
-		try {
 			
 			// array for the a-z (97-122, based on ASCII table )
 			int[] myArray = new int[26];
-		
 			TextFile inputFile = new TextFile("sample,txt", 'r');
-			
-			
 			String sCurrentLine = null;
-
 
 			while (inputFile.EndOfFile() != true)
 			{
@@ -61,13 +49,8 @@ public class Huffman {
 		        double value = myArray[i];
 		        System.out.printf("%8s%13f%n",singleLetter,(value/sumOfCharacters)*100);
 		    }
-
-		    } 
+		}
 		
-		catch (FileNotFoundException e) {
-		        e.printStackTrace();
-		    }
-		
-	}
 	
-}
+	}
+
