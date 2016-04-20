@@ -1,8 +1,6 @@
 package huffman;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 
 public class Huffman {
@@ -12,8 +10,7 @@ public class Huffman {
 			// array for the a-z (97-122, based on ASCII table )
 			int[] myArray = new int[26];
 			TextFile inputFile = new TextFile("samp.txt", 'r');
-			
-
+			String inputLine = null;
 			while (inputFile.EndOfFile() != true)
 			{
 				char singleLetter = inputFile.readChar();
@@ -49,8 +46,13 @@ public class Huffman {
 		        double value = myArray[i];
 		        System.out.printf("%8s%13f%n",singleLetter,(value/sumOfCharacters)*100);
 		    }
-		}
+		    
+		    
+		   
+		    
+		} // end main method 
+	
+	
 		
 	
-	}
-
+	} // end of class Huffman
