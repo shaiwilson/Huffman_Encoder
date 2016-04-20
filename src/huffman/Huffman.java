@@ -5,6 +5,13 @@ import java.io.IOException;
 
 public class Huffman {
 	
+	/**
+	 * This program will compress a file using Huffman encoding.
+	 *
+	 * @author Shai Wilson
+	 */
+
+	
 	public static void main(String[] args) throws IOException {
 			
 			// array for the a-z (97-122, based on ASCII table )
@@ -22,9 +29,11 @@ public class Huffman {
 		            }
 		       }
 			
+			// reset the file back to the beginning
 		    inputFile.close();
 
 
+		    // build a frequency table
 		    //Calculate the total number of characters from the input file.
 		    double sumOfCharacters = 0;
 		    
