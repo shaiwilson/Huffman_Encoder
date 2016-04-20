@@ -13,32 +13,31 @@ public class Huffman {
 		
 
 		
-		// array for the a-z (97-122, based on ASCII table )
+		
 
 		try {
 			
+			// array for the a-z (97-122, based on ASCII table )
 			int[] myArray = new int[26];
-			
-			// open the file
-//			BufferedReader readerObject = new BufferedReader(new FileReader(inputFile));
-			
+		
 			TextFile inputFile = new TextFile("sample,txt", 'r');
 			
 			
 			String sCurrentLine = null;
-//			sCurrentLine = readerObject.readLine();
 
-			for(int i = 0; i<sCurrentLine.length(); i++)  // for each character in the readline                    from the input file, a-z will be counted.
-		        {
-		            if (Character.isLetter(sCurrentLine.charAt(i)) == true)     
+
+			while (inputFile.EndOfFile() != true)
+			{
+				char singleLetter = inputFile.readChar();
+			
+		            if (Character.isLetter(singleLetter) == true)     
 		            {
-		            	char singleLetter = sCurrentLine.charAt(i);
 		            	 // Assigning frequency of a character. 97-122 represents a-z (ASCII table). e.g lowercase c = 97
 		            	myArray[(int)(singleLetter)-97] = myArray[(int)(singleLetter)-97] + 1; 
 		            }
-		        }
+		       }
 			
-		        readerObject.close();
+		    inputFile.close();
 
 
 		    //Calculate the total number of characters from the input file.
