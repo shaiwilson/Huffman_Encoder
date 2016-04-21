@@ -9,8 +9,7 @@ public class Huffman {
 	/**
 	 * This program will compress a file using Huffman encoding.
 	 * First count the amount of times each character appears. This is the frequency of each character.
-	 * Create a collection of n small, one-node trees 
-	 * (where newNode is the number of distinct characters in the input stream).
+	 * Then create a collection of n small, one-node trees 
  	 * Each of these n trees represent a distinct input character and have
  	 * a weight corresponding to their count tallied in the analysis step.
 	 *
@@ -82,7 +81,19 @@ public class Huffman {
 		        System.out.printf("%8s%13f%n",singleLetter,(value/sumOfCharacters)*100);
 		    }
 		    
+		    // create the huffman encoding tree
 		    HuffmanTree tree = new HuffmanTree(frequencyMap);
+		    
+		    // print out the encoded treed
+		    
+		    // TODO 
+		    // Build a lookup table, which contains the codes for all characters in the input file
+		    // Check to see if the compressed file would be smaller than the original file. If not, stop -- don't do any compression. Print out a message instead that the file cannot be compressed
+		    // If the compressed file will be smaller, create the encoded file:
+		    	// Print out a "Magic Number", which will be used to guard against uncompressing files that we didn't compress
+		    	// Print out the Huffman tree to the output file
+		    	// Use the lookup table to encode the file
+		    
 		    
 		  
 		} // end main method 

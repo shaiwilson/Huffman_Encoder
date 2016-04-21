@@ -57,6 +57,11 @@ package huffman;
 	    void setLetter(char element) {
 			letter = element;
 		}
+	    
+		public boolean isLeaf()
+		{
+			return((leftchild_ == null) && (rightsib_ == null));
+		}
 	}
 
 
