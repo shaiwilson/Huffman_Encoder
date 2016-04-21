@@ -12,16 +12,16 @@ public class HuffmanLeaf {
     public static int height(Node tree) {
 	if (tree == null)
 	    return 0;
-	return 1 + MAX(height(tree.left()),
-		       height(tree.right()));
+	return 1 + MAX(height(tree.getLeftChild()),
+		       height(tree. getRightsib()));
     }
     
         
     public static int numNodes(Node tree) {
 	if (tree == null)
 	    return 0;
-	return 1 + numNodes(tree.left()) + 
-	    numNodes(tree.right());
+	return 1 + numNodes(tree.getLeftChild()) + 
+	    numNodes(tree. getRightsib());
     }
 
     /* Input:  A binary tree, and an element
@@ -35,7 +35,7 @@ public class HuffmanLeaf {
 	    {
 		return true;
 	    }
-	return find(tree.left(), elem) || find(tree.right(),elem);
+	return find(tree.getLeftChild(), elem) || find(tree. getRightsib(),elem);
 
     }
 
@@ -47,13 +47,13 @@ public class HuffmanLeaf {
         {
             return 0;
         }
-        else if (tree.left() == null && tree.right() == null)
+        else if (tree.getLeftChild() == null && tree. getRightsib() == null)
         {
             return 1;
         }
         else
         {
-            return numLeaves(tree.left()) + numLeaves(tree.right());
+            return numLeaves(tree.getLeftChild()) + numLeaves(tree. getRightsib());
         }
     }
 
@@ -82,21 +82,21 @@ public class HuffmanLeaf {
         {
             return -1;
         }
-        else if (tree.left() == null && tree.right() == null)
+        else if (tree.getLeftChild() == null && tree. getRightsib() == null)
         {
             return 0;
         }
-        else if (tree.left() == null)
+        else if (tree.getLeftChild() == null)
         {
-            return 1 + shallowestLeaf(tree.right());
+            return 1 + shallowestLeaf(tree. getRightsib());
         }
-        else if (tree.right() == null)
+        else if (tree. getRightsib() == null)
         {
-            return 1 + shallowestLeaf(tree.left());
+            return 1 + shallowestLeaf(tree.getLeftChild());
         }
         else
         {
-            return 1 + MAX(shallowestLeaf(tree.left()), shallowestLeaf(tree.right()));
+            return 1 + MAX(shallowestLeaf(tree.getLeftChild()), shallowestLeaf(tree. getRightsib()));
         }
     }
 	

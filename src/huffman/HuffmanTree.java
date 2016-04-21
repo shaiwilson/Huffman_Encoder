@@ -1,37 +1,28 @@
 package huffman;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
-
-
 public class HuffmanTree{
 	private Node root;
-	
 
 	/**
 	 * Constructs a Huffman tree from given character frequencies.
 	 * 
 	 */
 	
-	public HuffmanTree()
-	{
-		
-	}
-	
-	/**
-	 * Decodes an encoded string.
-	 * 
-	 * @param input
-	 *            a string made up of 0 and 1
-	 */
-	public String decode(String input) {
-		return input;
-		
-	}
-	
-	
+	public void setRoot(Node root) {
+        this.root = root;
+    }
 
+    public void addToLeft(Node node) {
+        root.setLeftchild(node);
+    }
+
+    public void addToRight(Node node) {
+        root.setRightsib(node);
+    }
+
+    public Node getRoot() {
+        return root;
+    }
 	
 }
 	

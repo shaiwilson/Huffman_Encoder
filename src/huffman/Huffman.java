@@ -56,12 +56,19 @@ public class Huffman {
 		        System.out.printf("%8s%13f%n",singleLetter,(value/sumOfCharacters)*100);
 		    }
 		    
-		    
-		   
-		    
+		  
 		} // end main method 
 	
-	
+	/**
+	 * Decodes an encoded string.
+	 * 
+	 * @param input
+	 *            a string made up of 0 and 1
+	 */
+	public String decode(String input) {
+		return input;
 		
+	}
+
 	
-	} // end of class Huffman
+} // end of class Huffman
