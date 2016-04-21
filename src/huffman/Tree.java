@@ -1,6 +1,6 @@
 package huffman;
 
-public class HuffmanTree{
+public class Tree{
 	private Node root;
 
 	/**
@@ -23,6 +23,12 @@ public class HuffmanTree{
     public Node getRoot() {
         return root;
     }
+    
+    public Tree() {
+    	
+    }
+    
+    
 	
 }
 	

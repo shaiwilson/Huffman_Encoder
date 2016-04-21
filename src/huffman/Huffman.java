@@ -2,6 +2,8 @@ package huffman;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Huffman {
 	
@@ -16,6 +18,10 @@ public class Huffman {
 			
 			// array for the a-z (97-122, based on ASCII table )
 			int[] myArray = new int[26];
+			
+			// array to store node list
+			List<Tree> nodeList = new ArrayList<Tree>();
+			
 			TextFile inputFile = new TextFile("samp.txt", 'r');
 			String inputLine = null;
 			while (inputFile.EndOfFile() != true)
@@ -26,6 +32,7 @@ public class Huffman {
 		            {
 		            	 // Assigning frequency of a character. 97-122 represents a-z (ASCII table). e.g lowercase c = 97
 		            	myArray[(int)(singleLetter)-97] = myArray[(int)(singleLetter)-97] + 1; 
+		            	
 		            }
 		       }
 			
@@ -53,6 +60,14 @@ public class Huffman {
 		    {
 		        char singleLetter = (char)(i + 97);         //converting the decimal ASCII annotation to letters for a-z
 		        double value = myArray[i];
+		        System.out.println(singleLetter);
+		        System.out.println((int)value);
+		        Node newNode = new Node(singleLetter, (int)value);
+		        Tree tree = new Tree();
+	            tree.setRoot(newNode);
+	            nodeList.add(tree);
+		        
+		        
 		        System.out.printf("%8s%13f%n",singleLetter,(value/sumOfCharacters)*100);
 		    }
 		    
