@@ -1,14 +1,18 @@
 package huffman;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Huffman {
 	
 	/**
 	 * This program will compress a file using Huffman encoding.
+	 * First count the amount of times each character appears. This is the frequency of each character.
+	 * Create a collection of n small, one-node trees 
+	 * (where newNode is the number of distinct characters in the input stream).
+ 	 * Each of these n trees represent a distinct input character and have
+ 	 * a weight corresponding to their count tallied in the analysis step.
 	 *
 	 * @author Shai Wilson
 	 */
@@ -19,11 +23,15 @@ public class Huffman {
 			// array for the a-z (97-122, based on ASCII table )
 			int[] myArray = new int[26];
 			
+			/* VERSION 1*/
 			// array to store node list
-			List<Tree> nodeList = new ArrayList<Tree>();
+			// List<Tree> nodeList = new ArrayList<Tree>();
+			
+			/* Version 2 */
+			Map<Character, Integer> frequencyMap = new HashMap<Character, Integer>();
 			
 			TextFile inputFile = new TextFile("samp.txt", 'r');
-			String inputLine = null;
+			
 			while (inputFile.EndOfFile() != true)
 			{
 				char singleLetter = inputFile.readChar();
@@ -39,7 +47,6 @@ public class Huffman {
 			// reset the file back to the beginning
 		    inputFile.close();
 
-
 		    // build a frequency table
 		    //Calculate the total number of characters from the input file.
 		    double sumOfCharacters = 0;
@@ -51,7 +58,7 @@ public class Huffman {
 		    
 		    System.out.println("The total number of characters in this file is: " + sumOfCharacters);
 
-		    //Calculating the relative frequency.  
+		    // Calculating the relative frequency.  
 		    // Divide each occurrence for each letter (a-z) by the sumOfCharacters.
 		    
 		    System.out.printf("%10s%6s%n", "Letter", "%");   //column labels "Letter" and "%"
@@ -60,19 +67,27 @@ public class Huffman {
 		    {
 		        char singleLetter = (char)(i + 97);         //converting the decimal ASCII annotation to letters for a-z
 		        double value = myArray[i];
-		        System.out.println(singleLetter);
-		        System.out.println((int)value);
-		        Node newNode = new Node(singleLetter, (int)value);
-		        Tree tree = new Tree();
-	            tree.setRoot(newNode);
-	            nodeList.add(tree);
-		        
+		        frequencyMap.put('A', (int)value);
+
+		        /* Version 1 */
+		        // Create a collection of n small, one-node trees
+		        // Node newNode = new Node(singleLetter, (int)value);
+		        // Tree tree = new Tree();
+	            // tree.setRoot(newNode);
+	            // nodeList.add(tree);
+	         
+		        /* VERSION 2 */
+		        frequencyMap.put(singleLetter, (int)value);
 		        
 		        System.out.printf("%8s%13f%n",singleLetter,(value/sumOfCharacters)*100);
 		    }
 		    
+		    HuffmanTree tree = new HuffmanTree(frequencyMap);
+		    
 		  
 		} // end main method 
+
+	
 	
 	/**
 	 * Decodes an encoded string.
@@ -85,5 +100,11 @@ public class Huffman {
 		
 	}
 
+	
+	public static String encode(String toEncode,
+			Map<Character, String> encodingMap) {
+				return toEncode;
+		
+	}
 	
 } // end of class Huffman

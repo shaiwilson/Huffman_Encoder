@@ -1,6 +1,7 @@
 package huffman;
 
-public class Tree{
+class Tree{
+	
 	private Node root;
 
 	/**
@@ -27,8 +28,6 @@ public class Tree{
     public Tree() {
     	
     }
-    
-    
-	
+    	
 }
 	
