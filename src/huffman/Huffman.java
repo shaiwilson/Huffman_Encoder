@@ -67,15 +67,10 @@ public class Huffman {
 	    {
 	        char singleLetter = (char)(i + 97);         //converting the decimal ASCII annotation to letters for a-z
 	        double value = charList[i];
-//	        frequencyMap.put('A', (int)value);
-
-	        /* Version 1 */
+	        
 	        // Create a collection of n small, one-node trees
-//	         Node newNode = new Node(singleLetter, (int)value);
-//	         Tree tree = new Tree();
-//             tree.setRoot(newNode);
-//             nodeList.add(tree);
-         
+	        Node temp = new Node(singleLetter, (int) value);
+	        freqNode.add(temp);
 	        
 	        System.out.printf("%8s%13f%n",singleLetter,(value/sumOfCharacters)*100);
 	    }	

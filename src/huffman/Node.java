@@ -22,6 +22,11 @@ package huffman;
 	    public Node(char element) {
 	    	letter = element;
 	    }
+	    
+	    public Node(char element, int data) {
+	    	letter = element;
+	    	this.data = data;
+	    }
 
 	    public Node(char element, Node leftchild, Node rightsib) {
 	    	letter = element;
