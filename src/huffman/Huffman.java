@@ -6,7 +6,6 @@ public class Huffman {
 	
 	// array to store node list
 	ArrayList<Node> freqNode = new ArrayList<Node>();
-	
 	ArrayList<String> huffTable = new ArrayList<String>();
 	
 	/**
