@@ -4,38 +4,41 @@ package huffman;
 		
 
 		/* This class represents a node in a binary tree data structure. 
-		 * Each node has a character and a weight equal to the number of 
+		 * Each node has a character and a data equal to the number of 
 		 * times the character occurs. 
 		 *
 		 */
 
 	    private Node leftchild_;
 	    private Node rightsib_;
-	    private Integer weight;
+	    private int data;
 	    private char letter;
 
+	    public Node()
+	    {
+	    	this.data = 0;
+	    }
 
-	    public Node(char element, Integer weight) {
-		letter = element;
-		this.weight = weight;
+	    public Node(char element) {
+	    	letter = element;
 	    }
 
 	    public Node(char element, Node leftchild, Node rightsib) {
-		letter = element;
-		leftchild_ = leftchild;
-		rightsib_ = rightsib;
+	    	letter = element;
+	    	leftchild_ = leftchild;
+	    	rightsib_ = rightsib;
 	    }
 
 	    Node getLeftChild() {
-		return leftchild_;
+	    	return leftchild_;
 	    }
 
 	    Node getRightsib() {
-		return rightsib_;
+	    	return rightsib_;
 	    }
 
-	    Integer weight() {
-		return weight;
+	    Integer data() {
+	    	return data;
 	    }
 	    
 	    char letter() {
@@ -43,15 +46,15 @@ package huffman;
 		}
 
 	    void setLeftchild(Node leftchild) {
-		leftchild_ = leftchild;
+	    	leftchild_ = leftchild;
 	    }
 
 	    void setRightsib(Node rightsib) {
-		rightsib_ = rightsib;
+	    	rightsib_ = rightsib;
 	    }
 
-	    void setWeight(Integer element) {
-		weight = element;
+	    void setdata(int element) {
+	    	data = element;
 	    }
 	    
 	    void setLetter(char element) {

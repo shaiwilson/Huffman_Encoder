@@ -1,7 +1,9 @@
 package huffman;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Huffman {
@@ -24,10 +26,10 @@ public class Huffman {
 			
 			/* VERSION 1*/
 			// array to store node list
-			// List<Tree> nodeList = new ArrayList<Tree>();
+			 List<Tree> nodeList = new ArrayList<Tree>();
 			
 			/* Version 2 */
-			Map<Character, Integer> frequencyMap = new HashMap<Character, Integer>();
+//			Map<Character, Integer> frequencyMap = new HashMap<Character, Integer>();
 			
 			TextFile inputFile = new TextFile("samp.txt", 'r');
 			
@@ -66,17 +68,17 @@ public class Huffman {
 		    {
 		        char singleLetter = (char)(i + 97);         //converting the decimal ASCII annotation to letters for a-z
 		        double value = myArray[i];
-		        frequencyMap.put('A', (int)value);
+//		        frequencyMap.put('A', (int)value);
 
 		        /* Version 1 */
 		        // Create a collection of n small, one-node trees
-		        // Node newNode = new Node(singleLetter, (int)value);
-		        // Tree tree = new Tree();
-	            // tree.setRoot(newNode);
-	            // nodeList.add(tree);
+		         Node newNode = new Node(singleLetter, (int)value);
+		         Tree tree = new Tree();
+	             tree.setRoot(newNode);
+	             nodeList.add(tree);
 	         
 		        /* VERSION 2 */
-		        frequencyMap.put(singleLetter, (int)value);
+//		        frequencyMap.put(singleLetter, (int)value);
 		        
 		        System.out.printf("%8s%13f%n",singleLetter,(value/sumOfCharacters)*100);
 		    }
