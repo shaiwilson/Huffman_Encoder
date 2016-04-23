@@ -8,26 +8,27 @@ import java.util.Map;
 
 public class Huffman {
 	
-	/**
-	 * This program will compress a file using Huffman encoding.
-	 * First count the amount of times each character appears. This is the frequency of each character.
-	 * Then create a collection of n small, one-node trees 
- 	 * Each of these n trees represent a distinct input character and have
- 	 * a weight corresponding to their count tallied in the analysis step.
-	 *
-	 * @author Shai Wilson
-	 */
 	
 	// array to store node list
 	ArrayList<Node> freqNode = new ArrayList<Node>();
 	
 	ArrayList<String> huffTable = new ArrayList<String>();
 	
+	/**
+	 * This method will count the amount of times each character appears and add the
+	 * is frequency of each character to the array charList \.
+	 * By using the characters contained within the frequency list,
+	 * we build a collection of one-node trees.  
+ 	 * Each of these n trees represent a distinct input character and have
+ 	 * a weight(data) corresponding to their count tallied in the frequency step.
+	 *
+	 * @author Shai Wilson
+	 */
 	
 	public void countFreq(String filename){
 		
 		// array for the a-z (97-122, based on ASCII table )
-		int[] myArray = new int[26];
+		int[] charList = new int[26];
 					 
 		TextFile inputFile = new TextFile(filename, 'r');
 		
@@ -38,7 +39,7 @@ public class Huffman {
 	            if (Character.isLetter(singleLetter) == true)     
 	            {
 	            	 // Assigning frequency of a character. 97-122 represents a-z (ASCII table). e.g lowercase c = 97
-	            	myArray[(int)(singleLetter)-97] = myArray[(int)(singleLetter)-97] + 1; 
+	            	charList[(int)(singleLetter)-97] = charList[(int)(singleLetter)-97] + 1; 
 	            	
 	            }
 	       }
@@ -50,9 +51,9 @@ public class Huffman {
 	    //Calculate the total number of characters from the input file.
 	    double sumOfCharacters = 0;
 	    
-	    for (int i = 0; i < myArray.length; i++) 
+	    for (int i = 0; i < charList.length; i++) 
 	    {
-	        sumOfCharacters += myArray[i];
+	        sumOfCharacters += charList[i];
 	    }
 	    
 	    System.out.println("The total number of characters in this file is: " + sumOfCharacters);
@@ -62,10 +63,10 @@ public class Huffman {
 	    
 	    System.out.printf("%10s%6s%n", "Letter", "%");   //column labels "Letter" and "%"
 	    System.out.println();
-	    for (int i = 0; i < myArray.length; i++) 
+	    for (int i = 0; i < charList.length; i++) 
 	    {
 	        char singleLetter = (char)(i + 97);         //converting the decimal ASCII annotation to letters for a-z
-	        double value = myArray[i];
+	        double value = charList[i];
 //	        frequencyMap.put('A', (int)value);
 
 	        /* Version 1 */
