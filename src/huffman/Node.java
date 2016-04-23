@@ -3,10 +3,12 @@ package huffman;
 	public class Node {
 		
 
-		/* This class represents a node in a binary tree data structure. 
-		 * Each node has a character and a data equal to the number of 
-		 * times the character occurs. 
+		/** 
+		 * 
+		 * This class represents a node in a binary tree. 
+		 * Each node has a character and data equal to it's frequency.
 		 *
+		 *	@author Shai Wilson
 		 */
 
 	    private Node leftchild_;

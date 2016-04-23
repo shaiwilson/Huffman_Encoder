@@ -1,13 +1,8 @@
 package huffman;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class Huffman {
-	
 	
 	// array to store node list
 	ArrayList<Node> freqNode = new ArrayList<Node>();
@@ -22,7 +17,7 @@ public class Huffman {
  	 * Each of these n trees represent a distinct input character and have
  	 * a weight(data) corresponding to their count tallied in the frequency step.
 	 *
-	 * @author Shai Wilson
+	 * 
 	 */
 	
 	public void countFreq(String filename){
@@ -76,6 +71,9 @@ public class Huffman {
 	    }	
 	}
 
+	public ArrayList<Integer> mergeSort(ArrayList<Integer> listSort){
+		
+	}
 	
 	public static void main(String[] args) throws IOException {
 			
