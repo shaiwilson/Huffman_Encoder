@@ -70,9 +70,75 @@ public class Huffman {
 	    }	
 	}
 
-	public ArrayList<Integer> mergeSort(ArrayList<Integer> listSort){
+	
+	public ArrayList<Integer> mergeSort(ArrayList<Integer> list)
+	{
+		int length = list.size();
+		
+		if (list == null)
+		{
+			return list;
+		}
+		
+		Node first = list.get(0);
+		Node second = list.next;
+		
 		// TODO
-		return listSort;	
+		// split the list in half at the middle point
+		// 
+		
+		while((second != null) && (second.next != null))
+		{
+			list = list.next;
+			second = second.next.next;
+			
+		}
+		second = list .next;
+		list.next = null;
+		
+		
+		return merge(mergeSort(first), mergeSort(second));
+		
+					
+	}
+	
+	// change this implementation of merge sort with a LL
+	// modify method for arraylist
+	
+	public ArrayList<Integer> merge(Node first, Node second)
+	{
+		Node tmp = new Node();
+		Node head = tmp;
+		Node result = head;
+		
+		while((first != null) && (second != null))
+		{
+			if(first.data() <= second.data())
+			{
+				result.next = first;
+				result = first;
+				first = first.next;
+			}
+			
+			else
+			{
+				result.next = second;
+				result = second;
+				second = second.next;
+			}
+		}
+		
+		if (first == null)
+		{
+			result.next = second;
+		}
+		else 
+		{
+			result.next = first;
+		}
+		
+		return head.next;
+		
 	}
 	
 	public boolean compress(int treesize){
@@ -106,10 +172,6 @@ public class Huffman {
 	public void readFilePrint(BinaryFile inputFile, TextFile writeTo) {
 		// TODO
 	}
-	
-	
-	
-	
 	
 	
 	
@@ -164,9 +226,6 @@ public class Huffman {
 				
 			}
 		}
-		
-		
-		
 		
 	} // close Huffman class
 	
