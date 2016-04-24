@@ -6,10 +6,9 @@ import java.util.Arrays;
 public class Huffman {
 	
 	// array to store node list
-	ArrayList<Node> freqNode = new ArrayList<Node>();
-	ArrayList<String> huffTable = new ArrayList<String>();
-	ArrayList<Integer> freqSort = new ArrayList<Integer>();
-	
+	public static ArrayList<Node> freqNode = new ArrayList<Node>();
+	public static ArrayList<String> huffTable = new ArrayList<String>();
+	public static ArrayList<Integer> freqSort = new ArrayList<Integer>();
 	
 	
 	/**
@@ -148,7 +147,6 @@ public class Huffman {
         }
     }
  
-
 	
 	public boolean compress(int treesize){
 		// TODO
@@ -189,7 +187,7 @@ public class Huffman {
 	 *            a string made up of 0 and 1
 	 */
 	
-	public class HuffmanTree {
+	public static class HuffmanTree {
 		
 		/**
 		 * Constructs a huffman tree from given character frequencies.
@@ -215,7 +213,7 @@ public class Huffman {
 		      }
 		   }
 		
-		public Node buildTree() {
+		public static Node buildTree() {
 			Node tree = new Node(0);
 			
 			while(freqNode.size() > 1)
@@ -227,8 +225,32 @@ public class Huffman {
 				
 				tree.setdata(temp1.data() + temp2.data());
 				
+				tree.setLeftchild(temp1);
+				tree.setRightsib(temp2);
+				
+				while(i < freqNode.size())
+				{
+					if(tree.data() <= freqNode.get(i).data())
+					{
+						freqNode.add(i, tree);
+						break;
+					}
+					
+					if (i == freqNode.size() - 1 &&
+							tree.data() >= freqNode.get(i).data())
+					{
+						freqNode.add(tree);
+						break;
+					}
+					
+					i++;
+				}
+				
+				freqNode.remove(0);
+				freqNode.remove(0);
 			}
-			return null;
+			
+			return tree;
 		}
 		
 		public void huffmanTable(Node root, String huffmanCode) {
@@ -244,9 +266,14 @@ public class Huffman {
 	
 	public static void main(String[] args) {
 			
-			
+			Huffman inClass = new Huffman();
+			inClass.countFreq("samp.txt");
+//			Node root = HuffmanTree.buildTree();
+					
+				
+
 				    
-		    // print out the encoded treed
+		    // print out the encoded tree
 		    
 		    // TODO 
 		    // Build a lookup table, which contains the codes for all characters in the input file
