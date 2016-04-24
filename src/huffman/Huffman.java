@@ -73,71 +73,46 @@ public class Huffman {
 	
 	public ArrayList<Integer> mergeSort(ArrayList<Integer> list)
 	{
-		int length = list.size();
+		ArrayList<Integer> left = new ArrayList<Integer>();
+		ArrayList<Integer> right = new ArrayList<Integer>();
+		int mid;
 		
-		if (list == null)
-		{
+		if (list.size() == 1) {
 			return list;
 		}
-		
-		Node first = list.get(0);
-		Node second = list.next;
-		
-		// TODO
-		// split the list in half at the middle point
-		// 
-		
-		while((second != null) && (second.next != null))
-		{
-			list = list.next;
-			second = second.next.next;
+		else {
+			mid = list.size()/2;
+			
+			for (int i = 0; i < mid; i++) {
+				left.add(list.get(i));
+			}
+			
+			for (int i = mid; i < list.size(); i++) {
+				right.add(list.get(i));
+			}
+			
+			left = mergeSort(left);
+			right = mergeSort(right);
+			
+			// merge the results 
+			merge(left, right, list);
 			
 		}
-		second = list .next;
-		list.next = null;
 		
-		
-		return merge(mergeSort(first), mergeSort(second));
-		
+		return list;
 					
 	}
 	
 	// change this implementation of merge sort with a LL
 	// modify method for arraylist
 	
-	public ArrayList<Integer> merge(Node first, Node second)
+	public ArrayList<Integer> merge(ArrayList<Integer> left, ArrayList<Integer> right, ArrayList<Integer> list)
 	{
-		Node tmp = new Node();
-		Node head = tmp;
-		Node result = head;
+		int leftIndex = 0;
+		int rightIndex = 0;
+		int wholeIndex = 0;
 		
-		while((first != null) && (second != null))
-		{
-			if(first.data() <= second.data())
-			{
-				result.next = first;
-				result = first;
-				first = first.next;
-			}
-			
-			else
-			{
-				result.next = second;
-				result = second;
-				second = second.next;
-			}
-		}
 		
-		if (first == null)
-		{
-			result.next = second;
-		}
-		else 
-		{
-			result.next = first;
-		}
-		
-		return head.next;
 		
 	}
 	
