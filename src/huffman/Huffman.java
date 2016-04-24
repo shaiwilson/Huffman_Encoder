@@ -74,7 +74,7 @@ public class Huffman {
 		return listSort;	
 	}
 	
-	public static class HuffmanTree {
+	public class HuffmanTree {
 		
 		/**
 		 * Constructs a huffman tree from given character frequencies.
@@ -84,7 +84,7 @@ public class Huffman {
 		 * 
 		 */
 		
-		 public static int numNodes(Node tree) {
+		 public int numNodes(Node tree) {
 				if (tree == null)
 				    return 0;
 				return 1 + numNodes(tree.getLeftChild()) + 
@@ -112,8 +112,9 @@ public class Huffman {
 			}
 			return null;
 		}
+	}
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 			
 			
 				    
