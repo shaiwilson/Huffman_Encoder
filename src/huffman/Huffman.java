@@ -1,12 +1,14 @@
 package huffman;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Huffman {
 	
 	// array to store node list
 	ArrayList<Node> freqNode = new ArrayList<Node>();
 	ArrayList<String> huffTable = new ArrayList<String>();
+	
 	
 	/**
 	 * This method will count the amount of times each character appears and add the
@@ -21,8 +23,10 @@ public class Huffman {
 	
 	public void countFreq(String filename){
 		
+		
 		// array for the a-z (97-122, based on ASCII table )
-		int[] charList = new int[26];
+//		int[] charList = new int[26];
+		ArrayList<Integer> charList = new ArrayList<Integer>();
 					 
 		TextFile inputFile = new TextFile(filename, 'r');
 		
@@ -33,7 +37,8 @@ public class Huffman {
 	            if (Character.isLetter(singleLetter) == true)     
 	            {
 	            	 // Assigning frequency of a character. 97-122 represents a-z (ASCII table). e.g lowercase c = 97
-	            	charList[(int)(singleLetter)-97] = charList[(int)(singleLetter)-97] + 1; 
+//	            	charList[(int)(singleLetter)-97] = charList[(int)(singleLetter)-97] + 1; 
+	            	charList.set((int)(singleLetter)-97, charList.get((int)(singleLetter)-97) + 1);
 	            	
 	            }
 	       }
@@ -45,7 +50,7 @@ public class Huffman {
 	    //Calculate the total number of characters from the input file.
 	    double sumOfCharacters = 0;
 	    
-	    for (int i = 0; i < charList.length; i++) 
+	    for (int i = 0; i < charList.size(); i++) 
 	    {
 	        sumOfCharacters += charList[i];
 	    }
@@ -57,12 +62,13 @@ public class Huffman {
 	    
 	    System.out.printf("%10s%6s%n", "Letter", "%");   //column labels "Letter" and "%"
 	    System.out.println();
-	    for (int i = 0; i < charList.length; i++) 
+	    for (int i = 0; i < charList.size(); i++) 
 	    {
 	        char singleLetter = (char)(i + 97);         //converting the decimal ASCII annotation to letters for a-z
 	        double value = charList[i];
 	        
 	        // Create a collection of n small, one-node trees
+	        freqSort = mergeSort(charList);
 	        Node temp = new Node(singleLetter, (int) value);
 	        freqNode.add(temp);
 	        
@@ -71,50 +77,76 @@ public class Huffman {
 	}
 
 	
-	public ArrayList<Integer> mergeSort(ArrayList<Integer> list)
+	public ArrayList<Integer> mergeSort(ArrayList<Integer> charArray)
 	{
+		
+		ArrayList<Integer> charList = new ArrayList<Integer>();
 		ArrayList<Integer> left = new ArrayList<Integer>();
 		ArrayList<Integer> right = new ArrayList<Integer>();
 		int mid;
 		
-		if (list.size() == 1) {
-			return list;
+		if (charList.size() == 1) {
+			return charList;
 		}
 		else {
-			mid = list.size()/2;
+			mid = charList.size()/2;
 			
 			for (int i = 0; i < mid; i++) {
-				left.add(list.get(i));
+				left.add(charList.get(i));
 			}
 			
-			for (int i = mid; i < list.size(); i++) {
-				right.add(list.get(i));
+			for (int i = mid; i < charList.size(); i++) {
+				right.add(charList.get(i));
 			}
 			
 			left = mergeSort(left);
 			right = mergeSort(right);
 			
 			// merge the results 
-			merge(left, right, list);
+			merge(left, right, charList);
 			
 		}
 		
-		return list;
+		return charList;
 					
 	}
 	
-	// change this implementation of merge sort with a LL
-	// modify method for arraylist
-	
-	public ArrayList<Integer> merge(ArrayList<Integer> left, ArrayList<Integer> right, ArrayList<Integer> list)
+
+	public void merge(ArrayList<Integer> left, ArrayList<Integer> right, ArrayList<Integer> list)
 	{
 		int leftIndex = 0;
 		int rightIndex = 0;
-		int wholeIndex = 0;
+		int listIndex = 0;
 		
-		
-		
-	}
+		while (leftIndex < left.size() && rightIndex < right.size()) {
+            if ( (left.get(leftIndex).compareTo(right.get(rightIndex))) < 0) {
+                list.set(listIndex, left.get(leftIndex));
+                leftIndex++;
+            } else {
+                list.set(listIndex, right.get(rightIndex));
+                rightIndex++;
+            }
+            listIndex++;
+        }
+ 
+        ArrayList<Integer> rest;
+        int restIndex;
+        if (leftIndex >= left.size()) {
+            rest = right;
+            restIndex = rightIndex;
+        } else {
+            rest = left;
+            restIndex = leftIndex;
+        }
+ 
+        // Copy the rest of whichever ArrayList (left or right) was not used up.
+        for (int i=restIndex; i<rest.size(); i++) {
+            list.set(listIndex, rest.get(i));
+            listIndex++;
+        }
+    }
+ 
+
 	
 	public boolean compress(int treesize){
 		// TODO
@@ -148,7 +180,12 @@ public class Huffman {
 		// TODO
 	}
 	
-	
+	/**
+	 * Decodes an encoded string.
+	 * 
+	 * @param input
+	 *            a string made up of 0 and 1
+	 */
 	
 	public class HuffmanTree {
 		
@@ -156,7 +193,6 @@ public class Huffman {
 		 * Constructs a huffman tree from given character frequencies.
 		 * Create a priority queue of huffman nodes, this method builds a huffman
 		 * encoding tree, which can be used to encode the given string
-		 *
 		 * 
 		 */
 		
@@ -221,25 +257,6 @@ public class Huffman {
 		    
 		  
 		} // end main method 
-
 	
 	
-	/**
-	 * Decodes an encoded string.
-	 * 
-	 * @param input
-	 *            a string made up of 0 and 1
-	 */
-	public String decode(String input) {
-		return input;
-		
-	}
-
-	
-	public static String encode(String toEncode,
-			Map<Character, String> encodingMap) {
-				return toEncode;
-		
-	}
-	
-} // end of class Huffman
+} // end of entire class Huffman.java
