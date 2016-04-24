@@ -71,8 +71,47 @@ public class Huffman {
 	}
 
 	public ArrayList<Integer> mergeSort(ArrayList<Integer> listSort){
+		// TODO
 		return listSort;	
 	}
+	
+	public boolean compress(int treesize){
+		// TODO
+		return false;
+	}
+	
+	public void printTree() {
+		// TODO 
+	}
+	
+	public void writeToFile() {
+		// TODO
+	}
+	
+	public boolean uncompress(BinaryFile inputFile) {
+		// TODO
+		return false;
+	}
+	
+	public Node readTree(BinaryFile inputFile) {
+		// TODO
+		return null;
+	}
+	
+	public void readFile(BinaryFile inputFile, TextFile writeTo)
+	{
+		// TODO
+	}
+	
+	public void readFilePrint(BinaryFile inputFile, TextFile writeTo) {
+		// TODO
+	}
+	
+	
+	
+	
+	
+	
 	
 	public class HuffmanTree {
 		
@@ -109,10 +148,27 @@ public class Huffman {
 				tree = new Node(0);
 				int i = 0;
 				Node temp1 = freqNode.get(0);
+				Node temp2 = freqNode.get(1);
+				
+				tree.setdata(temp1.data() + temp2.data());
+				
 			}
 			return null;
 		}
-	}
+		
+		public void huffmanTable(Node root, String huffmanCode) {
+			if (root == null){
+				return;
+			} 
+			else {
+				
+			}
+		}
+		
+		
+		
+		
+	} // close Huffman class
 	
 	public static void main(String[] args) {
 			
