@@ -8,6 +8,8 @@ public class Huffman {
 	// array to store node list
 	ArrayList<Node> freqNode = new ArrayList<Node>();
 	ArrayList<String> huffTable = new ArrayList<String>();
+	ArrayList<Integer> freqSort = new ArrayList<Integer>();
+	
 	
 	
 	/**
@@ -52,7 +54,7 @@ public class Huffman {
 	    
 	    for (int i = 0; i < charList.size(); i++) 
 	    {
-	        sumOfCharacters += charList[i];
+	        sumOfCharacters += charList.get(i);
 	    }
 	    
 	    System.out.println("The total number of characters in this file is: " + sumOfCharacters);
@@ -65,7 +67,7 @@ public class Huffman {
 	    for (int i = 0; i < charList.size(); i++) 
 	    {
 	        char singleLetter = (char)(i + 97);         //converting the decimal ASCII annotation to letters for a-z
-	        double value = charList[i];
+	        double value = charList.get(i);
 	        
 	        // Create a collection of n small, one-node trees
 	        freqSort = mergeSort(charList);
