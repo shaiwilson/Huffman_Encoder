@@ -20,6 +20,11 @@ package huffman;
 	    {
 	    	this.data = 0;
 	    }
+	    
+	    public Node(int value)
+	    {
+	    	this.data = value;
+	    }
 
 	    public Node(char element) {
 	    	letter = element;

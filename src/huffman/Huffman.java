@@ -71,8 +71,47 @@ public class Huffman {
 	}
 
 	public ArrayList<Integer> mergeSort(ArrayList<Integer> listSort){
-		
+		return listSort;	
 	}
+	
+	public static class HuffmanTree {
+		
+		/**
+		 * Constructs a huffman tree from given character frequencies.
+		 * Create a priority queue of huffman nodes, this method builds a huffman
+		 * encoding tree, which can be used to encode the given string
+		 *
+		 * 
+		 */
+		
+		 public static int numNodes(Node tree) {
+				if (tree == null)
+				    return 0;
+				return 1 + numNodes(tree.getLeftChild()) + 
+				    numNodes(tree.getRightsib());
+		 }
+		
+		 public void printTree(Node tree) 
+		   {
+		      if (tree != null) 
+		      {
+		         printTree(tree.getLeftChild());
+		         System.out.println(tree.data());
+		         printTree(tree.getRightsib());
+		      }
+		   }
+		
+		public Node buildTree() {
+			Node tree = new Node(0);
+			
+			while(freqNode.size() > 1)
+			{
+				tree = new Node(0);
+				int i = 0;
+				Node temp1 = freqNode.get(0);
+			}
+			return null;
+		}
 	
 	public static void main(String[] args) throws IOException {
 			
