@@ -266,6 +266,10 @@ public class Huffman {
 	
 	public static void main(String[] args) {
 			
+			// TODO
+			// fix arary list out of bounds bug
+			// test freq method
+		
 			Huffman inClass = new Huffman();
 			inClass.countFreq("samp.txt");
 //			Node root = HuffmanTree.buildTree();
